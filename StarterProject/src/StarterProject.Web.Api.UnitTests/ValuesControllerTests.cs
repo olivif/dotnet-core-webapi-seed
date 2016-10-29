@@ -1,4 +1,4 @@
-﻿namespace ReadingAnalytics.Web.Api.UnitTests
+﻿namespace StarterProject.Web.Api.UnitTests
 {
     using Controllers;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

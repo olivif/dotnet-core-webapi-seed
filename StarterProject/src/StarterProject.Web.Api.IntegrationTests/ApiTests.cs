@@ -1,4 +1,4 @@
-﻿namespace ReadingAnalytics.Web.Api.UnitTests
+﻿namespace StarterProject.Web.Api.UnitTests
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.TestHost;

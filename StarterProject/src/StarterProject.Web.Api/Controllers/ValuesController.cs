@@ -1,4 +1,4 @@
-﻿namespace ReadingAnalytics.Web.Api.Controllers
+﻿namespace StarterProject.Web.Api.Controllers
 {
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
