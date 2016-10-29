@@ -780,6 +780,15 @@
           "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.dll": {}
         }
       },
+      "Microsoft.CodeCoverage/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -3630,6 +3639,7 @@
           "Microsoft.AspNetCore.Routing": "1.0.1",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
+          "Microsoft.CodeCoverage": "1.0.1",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
@@ -4216,6 +4226,17 @@
         "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.xml",
         "lib/portable-net45+win8/Microsoft.CodeAnalysis.VisualBasic.dll",
         "lib/portable-net45+win8/Microsoft.CodeAnalysis.VisualBasic.xml"
+      ]
+    },
+    "Microsoft.CodeCoverage/1.0.1": {
+      "sha512": "HFavJjcizC1BmhkwRL2RfhK4gtkZE5y7PZOfNNkAX0rBfv3RiJkuVunofcO9rXQGW7p7PFqmpO8HgMPcUYVf1w==",
+      "type": "package",
+      "path": "Microsoft.CodeCoverage/1.0.1",
+      "files": [
+        "Microsoft.CodeCoverage.1.0.1.nupkg.sha512",
+        "Microsoft.CodeCoverage.nuspec",
+        "lib/dnx451/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll"
       ]
     },
     "Microsoft.CSharp/4.0.1": {

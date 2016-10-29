@@ -765,6 +765,15 @@
           "lib/netstandard1.3/_._": {}
         }
       },
+      "Microsoft.CodeCoverage/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -3977,6 +3986,17 @@
         "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.xml",
         "lib/portable-net45+win8/Microsoft.CodeAnalysis.VisualBasic.dll",
         "lib/portable-net45+win8/Microsoft.CodeAnalysis.VisualBasic.xml"
+      ]
+    },
+    "Microsoft.CodeCoverage/1.0.1": {
+      "sha512": "HFavJjcizC1BmhkwRL2RfhK4gtkZE5y7PZOfNNkAX0rBfv3RiJkuVunofcO9rXQGW7p7PFqmpO8HgMPcUYVf1w==",
+      "type": "package",
+      "path": "Microsoft.CodeCoverage/1.0.1",
+      "files": [
+        "Microsoft.CodeCoverage.1.0.1.nupkg.sha512",
+        "Microsoft.CodeCoverage.nuspec",
+        "lib/dnx451/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "lib/dnxcore50/Microsoft.VisualStudio.CodeCoverage.Shim.dll"
       ]
     },
     "Microsoft.CSharp/4.0.1": {
@@ -9221,7 +9241,9 @@
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1"
     ],
-    ".NETCoreApp,Version=v1.0": []
+    ".NETCoreApp,Version=v1.0": [
+      "Microsoft.CodeCoverage >= 1.0.1"
+    ]
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {
