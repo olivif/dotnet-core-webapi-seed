@@ -17,7 +17,7 @@
         /// Reads a value from the store
         /// </summary>
         /// <param name="id">The id of the value to be read</param>
-        void Read(string id);
+        Value Read(string id);
 
         /// <summary>
         /// Updates a value in the store
