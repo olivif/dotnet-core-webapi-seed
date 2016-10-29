@@ -2,40 +2,52 @@
 {
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Store;
 
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private IValuesStore valuesStore;
+
+        public ValuesController(IValuesStore valuesStore)
+        {
+            this.valuesStore = valuesStore;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Value> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.valuesStore.Read();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Value Get(string id)
         {
-            return "value";
+            return this.valuesStore.Read(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Value value)
         {
+            this.valuesStore.Create(value);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]Value value)
         {
+            this.valuesStore.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            this.valuesStore.Delete(id);
         }
     }
 }
