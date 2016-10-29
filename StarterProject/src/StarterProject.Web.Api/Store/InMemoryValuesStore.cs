@@ -10,6 +10,8 @@ namespace StarterProject.Web.Api.Store
     /// </summary>
     public class InMemoryValuesStore : IValuesStore
     {
+        private readonly int MaxValuesStore = 10;
+
         private Dictionary<string, Value> valuesStore;
 
         public InMemoryValuesStore()
@@ -22,6 +24,11 @@ namespace StarterProject.Web.Api.Store
             if (valuesStore.ContainsKey(value.Id))
             {
                 throw new ApiException(ApiExceptionError.ValueAlreadyExists);
+            }
+
+            if (valuesStore.Count >= MaxValuesStore)
+            {
+                throw new ApiException(ApiExceptionError.ValuesStoreFull);
             }
 
             valuesStore.Add(value.Id, value);

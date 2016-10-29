@@ -5,5 +5,7 @@
         ValueAlreadyExists,
 
         ValueDoesntExist,
+
+        ValuesStoreFull
     }
 }
