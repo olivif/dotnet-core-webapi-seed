@@ -144,6 +144,41 @@
             ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueDoesntExist);
         }
 
+        [TestMethod]
+        public void InMemoryValuesStore_Update_ValueDoesntExist()
+        {
+            // Arrange
+            var valuesStore = new InMemoryValuesStore();
+            var value = new Value() { Id = "nonExistentId", Data = "data" };
+
+            // Act
+            Action action = () => valuesStore.Update(value);
+
+            // Assert
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueDoesntExist);
+        }
+
+        [TestMethod]
+        public void InMemoryValuesStore_Update_Success()
+        {
+            // Arrange
+            var value = new Value() { Id = "1", Data = "data" };
+            var valuesStore = new InMemoryValuesStore();
+            valuesStore.Create(value);
+
+            var updatedValue = "updatedData";
+
+            // Act
+            value.Data = updatedValue;
+            valuesStore.Update(value);
+
+            // Assert
+            var readValue = valuesStore.Read(value.Id);
+
+            Assert.AreEqual(value.Id, readValue.Id);
+            Assert.AreEqual(updatedValue, readValue.Data);
+        }
+
         private void CreateMultiple(IValuesStore valuesStore, int numberOfValuesToCreate)
         {
             for (int valueId = 0; valueId < numberOfValuesToCreate; valueId++)
