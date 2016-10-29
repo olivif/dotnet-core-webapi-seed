@@ -1,5 +1,6 @@
 ﻿namespace StarterProject.Web.Api.Store
 {
+    using System;
     using Exceptions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
@@ -25,8 +26,10 @@
             valuesStore.Create(value);
 
             // Assert
-            Assert.AreEqual(value, valuesStore.Read(value.Id));
-            Assert.AreSame(value, valuesStore.Read(value.Id));
+            var readValue = valuesStore.Read(value.Id);
+            Assert.AreEqual(value.Id, readValue.Id);
+            Assert.AreEqual(value, readValue);
+            Assert.AreSame(value, readValue);
         }
 
         [TestMethod]
@@ -37,9 +40,11 @@
             var valuesStore = new InMemoryValuesStore();
             valuesStore.Create(value);
 
-            // Act & Assert
-            var e = Assert.ThrowsException<ApiException>(() => valuesStore.Create(value));
-            Assert.AreEqual(ApiExceptionError.ValueAlreadyExists, e.Error);
+            // Act
+            Action action = () => valuesStore.Create(value);
+
+            // Assert
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueAlreadyExists);
         }
 
         [TestMethod]
@@ -71,9 +76,72 @@
             var valuesStore = new InMemoryValuesStore();
             var valuesToCreate = 11;
 
-            // Act & Assert
-            var e = Assert.ThrowsException<ApiException>(() => this.CreateMultiple(valuesStore, valuesToCreate));
-            Assert.AreEqual(ApiExceptionError.ValuesStoreFull, e.Error);
+            // Act
+            Action action = () => this.CreateMultiple(valuesStore, valuesToCreate);
+
+            // Assert
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValuesStoreFull);
+        }
+
+        [TestMethod]
+        public void InMemoryValuesStore_Delete_Success()
+        {
+            // Arrange
+            var value = new Value() { Id = "1", Data = "data" };
+            var valuesStore = new InMemoryValuesStore();
+            valuesStore.Create(value);
+
+            // Act
+            valuesStore.Delete(value.Id);
+
+            // Assert
+            Action action = () => valuesStore.Read(value.Id);
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueDoesntExist);
+        }
+
+        [TestMethod]
+        public void InMemoryValuesStore_Delete_ValueDoesntExist()
+        {
+            // Arrange
+            var valuesStore = new InMemoryValuesStore();
+            var valueId = "nonExistentId";
+
+            // Act
+            Action action = () => valuesStore.Delete(valueId);
+
+            // Assert
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueDoesntExist);
+        }
+
+        [TestMethod]
+        public void InMemoryValuesStore_Read_Success()
+        {
+            // Arrange
+            var value = new Value() { Id = "1", Data = "data" };
+            var valuesStore = new InMemoryValuesStore();
+            valuesStore.Create(value);
+
+            // Act
+            var readValue = valuesStore.Read(value.Id);
+
+            // Assert
+            Assert.AreEqual(value.Id, readValue.Id);
+            Assert.AreEqual(value, readValue);
+            Assert.AreSame(value, readValue);
+        }
+
+        [TestMethod]
+        public void InMemoryValuesStore_Read_ValueDoesntExist()
+        {
+            // Arrange
+            var valuesStore = new InMemoryValuesStore();
+            var valueId = "nonExistentId";
+
+            // Act
+            Action action = () => valuesStore.Read(valueId);
+
+            // Assert
+            ExceptionAssert.ThrowsApiException(action, ApiExceptionError.ValueDoesntExist);
         }
 
         private void CreateMultiple(IValuesStore valuesStore, int numberOfValuesToCreate)
