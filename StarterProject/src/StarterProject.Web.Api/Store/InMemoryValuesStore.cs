@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using StarterProject.Web.Api.Exceptions;
 using StarterProject.Web.Api.Models;
 
@@ -42,6 +43,11 @@ namespace StarterProject.Web.Api.Store
             }
 
             valuesStore.Remove(id);
+        }
+
+        public IList<Value> Read()
+        {
+            return valuesStore.Values.ToList();
         }
 
         public Value Read(string id)

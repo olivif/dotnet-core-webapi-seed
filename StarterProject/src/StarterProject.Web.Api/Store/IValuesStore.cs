@@ -1,5 +1,6 @@
 ﻿namespace StarterProject.Web.Api.Store
 {
+    using System.Collections.Generic;
     using StarterProject.Web.Api.Models;
 
     /// <summary>
@@ -12,6 +13,11 @@
         /// </summary>
         /// <param name="value">The value to be added</param>
         void Create(Value value);
+
+        /// <summary>
+        /// Reads all values from the store
+        /// </summary>
+        IList<Value> Read();
 
         /// <summary>
         /// Reads a value from the store
