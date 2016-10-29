@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using StarterProject.Web.Api.Store;
 
 namespace StarterProject.Web.Api
 {
@@ -29,6 +30,9 @@ namespace StarterProject.Web.Api
         {
             // Add framework services.
             services.AddMvc();
+
+            // Add project specific services
+            services.AddScoped<IValuesStore, InMemoryValuesStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
