@@ -9,3 +9,5 @@ dotnet: 1.0.0-preview2-003131
 script:
   - dotnet restore
   - pushd StarterProject/src/StarterProject.Web.Api && dotnet pack -c Release && popd
+  - pushd StarterProject/src/StarterProject.Web.Api.UnitTests && dotnet test && popd
+  - pushd StarterProject/src/StarterProject.Web.Api.IntegrationTests && dotnet test && popd
