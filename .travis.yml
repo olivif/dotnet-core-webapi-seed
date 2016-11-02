@@ -1,7 +1,11 @@
+language: csharp
+solution: .\StarterProject\StarterProject.sln
+
 dist: trusty
 sudo: required
 mono: none
 dotnet: 1.0.0-preview2-003131
 
-language: csharp
-solution: .\StarterProject\StarterProject.sln
+script:
+  - dotnet restore
+  - pushd StarterProject/src/StarterProject.Web.Api && dotnet pack -c Release && popd
