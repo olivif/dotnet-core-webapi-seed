@@ -4,4 +4,4 @@ mono: none
 dotnet: 1.0.0-preview2-003131
 
 language: csharp
-solution: StarterProject\StarterProject.sln
+solution: .\StarterProject\StarterProject.sln
