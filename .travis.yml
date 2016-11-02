@@ -1,5 +1,7 @@
-language: csharp
-mono: none
-dotnet: 1.0.0-preview2-003131
 dist: trusty
 sudo: required
+mono: none
+dotnet: 1.0.0-preview2-003131
+
+language: csharp
+solution: StarterProject\StarterProject.sln
