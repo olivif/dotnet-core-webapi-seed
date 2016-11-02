@@ -2,6 +2,8 @@
 
 Seed project for a dot net core webapi 
 
+[![Build Status](https://travis-ci.org/olivif/dotnet-core-webapi-seed.svg?branch=master)](https://travis-ci.org/olivif/dotnet-core-webapi-seed)
+
 ## Projects 
 
 `StarterProject.Web.Api` -> dev code
