@@ -31,8 +31,14 @@ namespace StarterProject.Web.Api
             // Add framework services.
             services.AddMvc();
 
-            // Add project specific services
-            services.AddScoped<IValuesStore, InMemoryValuesStore>();
+            var singletons = new List<Tuple<Type, Type>>
+            {
+                Pair<IValuesStore, InMemoryValuesStore>()
+            };
+
+            foreach (Tuple<Type, Type> singleton in singletons) {
+                services.AddSingleton(singleton.Item1, singleton.Item2);
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +48,10 @@ namespace StarterProject.Web.Api
             loggerFactory.AddDebug();
 
             app.UseMvc();
+        }
+
+        internal Tuple<Type, Type> Pair<I, C>() {
+            return new Tuple<Type, Type>(typeof(I), typeof(C));
         }
     }
 }
